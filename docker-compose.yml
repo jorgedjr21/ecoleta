@@ -1,0 +1,12 @@
+version: '3'
+services:
+  ecoleta-server:
+    build: 
+      dockerfile: ./server/Dockerfile
+      context: .
+    image: jorgedjr21/ecoleta-server
+    command: sh -c "npm run dev"
+    volumes:
+      - ./server/:/ecoleta-server
+    ports:
+      - "3000:3333"
