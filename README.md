@@ -1,6 +1,6 @@
 <h1 align="center"> EColeta</h1>
 
-<h4 align="center">Next Level Week powered by <a href="https://rocketseat.com.br/" target="_blank">Rocketseat</a></h4>  >
+<h4 align="center">Next Level Week powered by <a href="https://rocketseat.com.br/" target="_blank">Rocketseat</a></h4>
 
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-mit-success">
