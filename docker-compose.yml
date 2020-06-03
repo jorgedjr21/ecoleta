@@ -1,6 +1,15 @@
 version: '3'
 services:
+  db:
+    image: postgres
+    container_name: db
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
   ecoleta-server:
+    container_name: ecoleta-server
     build: 
       dockerfile: ./server/Dockerfile
       context: .
@@ -10,3 +19,8 @@ services:
       - ./server/:/ecoleta-server
     ports:
       - "3000:3333"
+    depends_on:
+      - db
+
+volumes:
+  postgres-data:
