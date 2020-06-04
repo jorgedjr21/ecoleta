@@ -1,4 +1,7 @@
 <h1 align="center"> EColeta</h1>
+<p align="center">
+  <img src="./web/src/assets/logo.svg" alt="Ecoleta">
+</p>
 
 <h4 align="center">Next Level Week powered by <a href="https://rocketseat.com.br/" target="_blank">Rocketseat</a></h4>
 
