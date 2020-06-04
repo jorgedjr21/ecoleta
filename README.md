@@ -17,7 +17,7 @@ There are three main applications at moment, but only one is functional
 <ol>
   <li>Server: The api that we store and provide informations about the collection points <strong>IN PROGRESS</strong></li>
   <li>Client Web: show informations and register new collection points <strong>TO BE DONE</strong></li>
-  <li>Mobile App: Show informations about the collection points<strong>TO BE DONE</strong></li>
+  <li>Mobile App: Show informations about the collection points <strong>TO BE DONE</strong></li>
 </ol>
 
 <h3>RUNING SERVER locally</h3>
