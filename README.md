@@ -23,7 +23,7 @@ There are three main applications at moment, but only one is functional
 <h3>RUNING SERVER locally</h3>
 
 <ol>
-  <li>Install PostgreSQ</li>
+  <li>Install PostgreSQL</li>
   <li>Install NPM dependencies</li>
   <li>Access the Postgresql and create a DATABASE called ecoleta_dev <code>CREATE DATABASE ecoleta_dev</code></li>
   <li>Run migrations with <code>npm run knex:migrate</code></li>
