@@ -23,6 +23,20 @@ services:
       - "3001:3333"
     depends_on:
       - db
+  ecoleta-web:
+    container_name: ecoleta-web
+    stdin_open: true
+    build:
+      dockerfile: ./web/Dockerfile
+      context: .
+    image: jorgedjr21/ecoleta-web
+    command: sh -c "npm run start"
+    volumes:
+      - ./web/:/ecoleta-web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - ecoleta-server
 
 volumes:
   postgres-data:
