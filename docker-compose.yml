@@ -20,7 +20,7 @@ services:
     volumes:
       - ./server/:/ecoleta-server
     ports:
-      - "3000:3333"
+      - "3001:3333"
     depends_on:
       - db
 
