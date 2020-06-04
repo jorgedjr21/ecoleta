@@ -1,4 +1,3 @@
-<h1 align="center"> EColeta</h1>
 <p align="center">
   <img src="./web/src/assets/logo.svg" alt="Ecoleta">
 </p>
