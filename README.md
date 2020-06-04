@@ -20,7 +20,7 @@ There are three main applications at moment, but only one is functional
   <li>Mobile App: Show informations about the collection points<strong>TO BE DONE</strong></li>
 </ol>
 
-<h3>RUNING SERVER locally<h3>
+<h3>RUNING SERVER locally</h3>
 
 <ol>
   <li>Install PostgreSQ</li>
