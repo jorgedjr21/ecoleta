@@ -31,7 +31,8 @@ There are three main applications at moment, but only one is functional
   <li>Run migrations with <code>npm run knex:migrate</code></li>
   <li>Run seeds with <code>npm run knex:seed</code></li>
   <li>RUN SERVER WITH <code>npm run dev</code></li>
-<ol>
+</ol>
+
 
 <h3> RUNING WEB locally</h3>
 
