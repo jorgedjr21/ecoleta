@@ -1,5 +1,5 @@
 interface Item {
-  id: number,
+  id: string,
   title: string,
   image_url: string
 }
