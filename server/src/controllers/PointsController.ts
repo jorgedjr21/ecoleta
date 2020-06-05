@@ -33,11 +33,18 @@ class PointsController {
         return response.status(404).json({message: 'Point not found'})
       }
 
-      const items = await knex('items')
+      const selectedItems = await knex('items')
         .join('point_items', 'items.id', '=', 'point_items.item_id')
         .where('point_items.point_id', id)
-        .select('items.title', 'items.image');
+        .select('items.id', 'items.title', 'items.image');
 
+      const items = selectedItems.map(item => {
+        return {
+          id: item.id,
+          title: item.title,
+          image_url: `http://localhost:3001/uploads/${item.image}`
+        }
+      })
       return response.json({point, items});
     } catch(error) {
       return response.status(503).json({error: error});

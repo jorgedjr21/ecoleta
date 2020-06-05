@@ -10,7 +10,7 @@ import axios from 'axios';
 import './styles.css';
 import logo from '../../assets/logo.svg'
 
-import Item from '../../interfaces/item';
+import Item from '../../interfaces/Item';
 import IBGEUFResponse from '../../interfaces/IBGEUFResponse';
 import IBGECityResponse from '../../interfaces/IBGECityResponse';
 
@@ -39,6 +39,7 @@ const CreatePoint = () => {
       setInitialPosition([latitude, longitude]);
     })
   }, []);
+  
   useEffect(() => {
     api.get('items').then(response => {
       setItems(response.data);
@@ -115,9 +116,8 @@ const CreatePoint = () => {
     }
 
     api.post('points', data).then(response => {
-      console.log(response);
-      alert('Ponto de coleta cadastrado');
-      history.push('/')
+      const { id } = response.data
+      history.push(`/point/${id}`)
     }).catch(error => {
       console.log(error);
     })
