@@ -17,8 +17,8 @@ This is a project to learn and improve my NodeJS, React and ReactNative Skills, 
 
 There are three main applications at moment, but only one is functional
 <ol>
-  <li>Server: The api that we store and provide informations about the collection points <strong>IN PROGRESS</strong></li>
-  <li>Client Web: show informations and register new collection points <strong>TO BE DONE</strong></li>
+  <li>Server: The api that we store and provide informations about the collection points <strong>MOSTLY DONE</strong></li>
+  <li>Client Web: show informations and register new collection points <strong>IN PROGRESS</strong></li>
   <li>Mobile App: Show informations about the collection points <strong>TO BE DONE</strong></li>
 </ol>
 
@@ -32,3 +32,12 @@ There are three main applications at moment, but only one is functional
   <li>Run seeds with <code>npm run knex:seed</code></li>
   <li>RUN SERVER WITH <code>npm run dev</code></li>
 <ol>
+
+<h3> RUNING WEB locally</h3>
+
+<ol>
+  <li>Install NPM dependencies</li>
+  <li>Configure the correct endpoint of Local Server Api Service <code>web/src/services/api.ts</code> (I believe its localhost:3333) </li>
+  <li>Start server (from step above)</li>
+  <li>Start start web client with <code>npm run start</code></li>
+</ol>
