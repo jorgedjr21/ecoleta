@@ -4,10 +4,13 @@ import knex from '../database/connection';
 class PointsController {
   async index(request: Request, response: Response) {
     const { city, uf, items} = request.query;
+    let parsedItems = ['-1']
 
-    const parsedItems = String(items)
-    .split(',')
-    .map(item => item.trim())
+    if(items != undefined && items != '') {
+      parsedItems = String(items)
+      .split(',')
+      .map(item => item.trim())
+    }
 
     try {
       const points = await knex('points')
