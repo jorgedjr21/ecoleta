@@ -120,7 +120,7 @@ const CreatePoint = () => {
       history.push(`/point/${id}`)
     }).catch(error => {
       console.log(error);
-    })
+    });
 
   }
 

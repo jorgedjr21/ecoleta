@@ -8,7 +8,7 @@ import api from '../../services/api';
 import Data from '../../interfaces/data';
 import * as MailComposer from 'expo-mail-composer';
 
-interface Params{
+interface Params {
   point_id: string,
 }
 

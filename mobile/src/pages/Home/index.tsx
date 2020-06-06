@@ -1,14 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Feather as Icon } from '@expo/vector-icons'
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation, NavigationHelpersContext } from '@react-navigation/native'
+import RNPickerSelect from 'react-native-picker-select'
+import IBGEUFResponse from '../../interfaces/IBGEUFResponse';
+import IBGECityResponse from '../../interfaces/IBGECityResponse';
+import axios from 'axios';
+
+interface RNPickerItens {
+  label: string,
+  value: string 
+}
 
 const Home = () => {
   const navigation = useNavigation();
+  const [ufs, setUfs] = useState<RNPickerItens[]>([]);
+  const [cities, setCities] = useState<RNPickerItens[]>([]);
+  const [selectedUf, setSelectedUf] = useState('0');
+  const [selectedCity, setSelectedCity] = useState('0');
+
+  useEffect(() => {
+    axios.get<IBGEUFResponse[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response => {
+      const ufItems = response.data.map((uf) => {
+         return {
+            label: uf.sigla,
+            value: uf.sigla
+          }
+        }
+      );
+
+      setUfs(ufItems)
+    })
+  }, [])
+
+  useEffect(() => {
+    if(selectedUf === '0')
+      return;
+    
+    axios.get<IBGECityResponse[]>(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`).then(response => {
+      const cityNames = response.data.map( (city) => {
+        return {
+          label: city.nome,
+          value: city.nome,
+        }
+      });
+
+      setCities(cityNames);
+    });
+  }, [selectedUf])
 
   function handleNavigateToPoints() {
-    navigation.navigate('Points')
+    navigation.navigate('Points', {uf: selectedUf, city: selectedCity})
+  }
+
+  function handleSelectUf(uf: string){
+    setSelectedUf(uf)
+  }
+
+  function handleSelectCity(city: string) {
+    setSelectedCity(city);
   }
 
   return (
@@ -24,11 +75,46 @@ const Home = () => {
         </View>
 
         <View style={styles.footer}>
-          <RectButton  style={styles.button} onPress={handleNavigateToPoints}>
+          <RNPickerSelect
+              placeholder={{
+                label: 'Selecione um Estado',
+                value: null,
+                color: "#322153"
+              }}
+              style={pickerSelectStyles}
+              useNativeAndroidPickerStyle={false}
+              onValueChange={(value) => handleSelectUf(value)}
+              value={selectedUf}
+              items={ufs}
+              Icon={()=>{
+                return <Icon style={pickerSelectStyles.picker_icon} name="chevron-down" size={44} color="#322153"/>
+              }}
+          />
+          <RNPickerSelect
+              placeholder={{
+                label: 'Selecione uma cidade',
+                value: null,
+                color: "#322153"
+              }}
+              style={pickerSelectStyles}
+              useNativeAndroidPickerStyle={false}
+              onValueChange={(value) => handleSelectCity(value)}
+              value={selectedCity}
+              items={cities}
+              Icon={()=>{
+                return <Icon style={pickerSelectStyles.picker_icon} name="chevron-down" size={44} color="#322153"/>
+              }}
+          />
+          <RectButton  
+            style={ selectedCity === '0' ?  styles.buttonDisabled : styles.button} 
+            onPress={ () => {
+              selectedCity === '' ? null : handleNavigateToPoints();
+            }}
+          >
             <View style={styles.buttonIcon}>
               <Icon name="arrow-right" color="#FFF" size={24}/>
             </View>
-            <Text style={styles.buttonText}>
+            <Text style={ selectedCity === '0' ?  styles.buttonTextDisbled : styles.buttonText} >
               Entrar
             </Text>
           </RectButton>
@@ -36,6 +122,37 @@ const Home = () => {
     </ImageBackground>
   )
 }
+
+const pickerSelectStyles = StyleSheet.create({
+  picker_icon:{
+    paddingTop: 5,
+  },
+  inputIOS: {
+    fontSize: 18,
+    height: 50,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    borderRadius: 8,
+    color: 'black',
+    paddingRight: 30, 
+  },
+  inputAndroid: {
+    fontSize: 18,
+    height: 50,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    borderRadius: 8,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+});
+
 
 const styles = StyleSheet.create({
   container: {
@@ -88,6 +205,16 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
 
+  buttonDisabled: {
+    backgroundColor: '#ccc',
+    height: 60,
+    flexDirection: 'row',
+    borderRadius: 10,
+    overflow: 'hidden',
+    alignItems: 'center',
+    marginTop: 8,
+  },
+
   buttonIcon: {
     height: 60,
     width: 60,
@@ -101,6 +228,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     textAlign: 'center',
     color: '#FFF',
+    fontFamily: 'Roboto_500Medium',
+    fontSize: 16,
+  },
+
+  buttonTextDisbled: {
+    flex: 1,
+    justifyContent: 'center',
+    textAlign: 'center',
+    color: '#888',
     fontFamily: 'Roboto_500Medium',
     fontSize: 16,
   }
