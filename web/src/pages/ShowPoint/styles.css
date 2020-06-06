@@ -56,7 +56,7 @@
 
 .points-info {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   list-style: none;
 }
@@ -64,16 +64,18 @@
 .points-info li {
   padding: 20px;
   border-radius: 8px;
+  align-items: center;
 }
 
 #page-point main div.infos{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0 30px 0;
-  margin-bottom: 15px;
-  border: 1px solid #6C6C80;
-  border-radius: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px;
+  margin-bottom: 20px;
+  background-color: #f0f0f5;
+  border-radius: 16px;
 }
 
 #page-point main h3 {
@@ -82,22 +84,12 @@
   border-radius: 4px;
 }
 
-#page-point main div.mail-phone {
-  width: 500px;
+#page-point main div.infos p.info-box {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between  ;
-}
-
-#page-point main div.mail-phone p.info-box {
-  text-align: center;
-  padding: 20px;
-}
-
-#page-point main div.mail-phone p.info-box span{
-  font-weight: bold;
-}
-
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.2em;
+} 
 
 .icon-spin {
   -webkit-animation: icon-spin 2s infinite linear;

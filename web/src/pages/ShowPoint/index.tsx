@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { Link, useParams } from 'react-router-dom';
 import { FiArrowLeft, FiLoader } from 'react-icons/fi';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaCity, FaFlag } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
@@ -10,10 +10,10 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 import Point from '../../interfaces/Point';
 
 import logo from '../../assets/logo.svg'
-import './success.css';
+import './styles.css';
 import Item from '../../interfaces/Item';
 
-const CreatePointSuccess = () => {
+const ShowPoint = () => {
   const { id } = useParams();
   const [positions, setPosition] = useState<[number, number]>([0, 0]);
   const [point, setPoint] = useState<Point>({id: '', name: '', whatsapp: '', email: '', latitude: 0, longitude: 0, city: '', uf: ''});
@@ -55,22 +55,22 @@ const CreatePointSuccess = () => {
           </Map>
 
           <div className="infos">
-            <ul className='points-info'>
-              <li><strong>Nome do ponto</strong>: {point.name} </li>
-              <li><strong>Cidade</strong>: {point.city} </li>
-              <li><strong>Estado</strong>: {point.uf} </li>
-            </ul>
-
-            <div className="mail-phone">
-              <p className="info-box">
-                <FaWhatsapp size={30} className="success-message"/><br/>
-                <span>{point.whatsapp}</span>
-              </p>
-              <p className="info-box">
-                <MdEmail size={30}/><br/>
-                <span>{point.email}</span>
-              </p>
-            </div>
+            <p className="info-box">
+              <FaCity size={30}/> <br/>
+              <span>{point.city}</span>
+            </p>
+            <p className="info-box">
+              <FaFlag size={30}/><br/>
+              <span>{point.uf}</span>
+            </p>
+            <p className="info-box">
+              <FaWhatsapp size={30} className="success-message"/><br/>
+              <span>{point.whatsapp}</span>
+            </p>
+            <p className="info-box">
+              <MdEmail size={30}/><br/>
+              <span>{point.email}</span>
+            </p>
           </div>
 
           <h3>Items coletados</h3>
@@ -106,4 +106,4 @@ const CreatePointSuccess = () => {
   )
 }
 
-export default CreatePointSuccess;
+export default ShowPoint;
