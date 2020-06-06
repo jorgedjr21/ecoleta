@@ -1,6 +1,7 @@
 interface Point {
   id: string,
   image: string,
+  image_url: string,
   name: string,
   email: string,
   whatsapp: string,
