@@ -3,9 +3,8 @@ import Knex from 'knex';
 export async function up(knex: Knex) {
   
   return knex.schema
-    .raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     .createTable('points', table => {
-      table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
+      table.increments('id').primary();
       table.string('image').notNullable();
       table.string('name').notNullable();
       table.string('email').notNullable();

@@ -3,12 +3,12 @@ import Knex from 'knex';
 export async function up(knex: Knex) {
   return knex.schema.createTable('point_items', table => {
     table.increments('id').primary();
-    table.uuid('point_id')
+    table.integer('point_id')
       .notNullable()
       .references('id')
       .inTable('points');
 
-    table.uuid('item_id')
+    table.integer('item_id')
       .notNullable()
       .references('id')
       .inTable('items');
