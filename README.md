@@ -10,6 +10,11 @@
   <img alt="GitHub stars" src="https://img.shields.io/github/stars/jorgedjr21/ecoleta?style=social">
   <a href="https://www.linkedin.com/in/jorgejd21/" target="_blank"><img alt="Made By" src="https://img.shields.io/badge/made_by-jorgedjr21-blue"></a>
 </p>
+
+<p align="center">
+  NodeJS, ExpressJS, ReactJS and React Native Applications  
+</p>
+
 <hr/>
 
 <h2> What is this project? </h2>
@@ -17,9 +22,9 @@ This is a project to learn and improve my NodeJS, React and ReactNative Skills, 
 
 There are three main applications at moment, but only one is functional
 <ol>
-  <li>Server: The api that we store and provide informations about the collection points <strong>MOSTLY DONE</strong></li>
-  <li>Client Web: show informations and register new collection points <strong>IN PROGRESS</strong></li>
-  <li>Mobile App: Show informations about the collection points <strong>TO BE DONE</strong></li>
+  <li>Server: The api that we store and provide informations about the collection points</li>
+  <li>Client Web: show informations and register new collection points</li>
+  <li>Mobile App: Show informations about the collection points</li>
 </ol>
 
 <h3>RUNING SERVER locally</h3>
