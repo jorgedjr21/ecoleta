@@ -7,7 +7,6 @@ import { RectButton } from 'react-native-gesture-handler'
 import api from '../../services/api';
 import Data from '../../interfaces/data';
 import * as MailComposer from 'expo-mail-composer';
-import Points from '../Points';
 
 interface Params{
   point_id: string,
