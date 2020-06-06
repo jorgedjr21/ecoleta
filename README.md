@@ -42,3 +42,12 @@ There are three main applications at moment, but only one is functional
   <li>Start server (from step above)</li>
   <li>Start start web client with <code>npm run start</code></li>
 </ol>
+
+<h3> RUNING MOBILE locally</h3>
+
+<ol>
+  <li>Install NPM dependencies</li>
+  <li>Configure the correct endpoint of Local Server Api Service <code>mobile/src/services/api.ts</code> (I believe its <YOUR_LOCAL_IP>:3333) </li>
+  <li>Start server (from step above)</li>
+  <li>Start start mobile client with <code>npm start</code></li>
+</ol>
